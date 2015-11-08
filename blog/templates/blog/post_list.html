@@ -1,17 +1,29 @@
+{% load staticfiles %}
 <html>
 	<head>
 		<title>Django Girls blog</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+		<link rel="stylesheet" href="{% static "css/blog.css" %}">
 	</head>
 	<body>
-		<div>
+		<div class="page-header">
 			<h1><a href="">Django Girls Blog</a></h1>
 		</div>
-		{% for post in posts %}
-			<div>
-				<p>published: {{ post.published_date }}</p>
-				<h2><a href="">{{ post.title }}</a></h2>
-				<p>{{ post.text|linebreaks }}</p>
+		<div class="content container">
+		<div class="row">
+			<div class="col-md-8">
+				{% for post in posts %}
+				<div class="post">
+					<div class="date">
+						{{ post.published_date }}
+					</div>
+					<h1><a href="">{{ post.title }}</a></h1>
+					<p>{{ post.text|linebreaks }}</p>
+				</div>
+				{% endfor %}
+				</div>
 			</div>
-		{% endfor %}		
+		</div>		
 	</body>
 </html>
